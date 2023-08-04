@@ -1,42 +1,42 @@
 @echo off
-rem ����һ����������д��ʾ������
+rem 这是一个用批处理写的示例代码
 
-rem ��ȡ��ǰĿ¼�µ�qylc.exe������·��
-set qylc_path=%cd%\qylc.exe
+rem 获取当前目录下的qythou.exe的完整路径
+set qythou_path=%cd%\qythou.exe
 
-rem ��ע����д���.qy�ļ����͵ļ���������Ĭ��ֵΪqylcfile
-reg add HKCR\.qy /ve /d qylcfile /f
+rem 在注册表中创建.qy文件类型的键，并设置默认值为qythoufile
+reg add HKCR\.qy /ve /d qythoufile /f
 
-rem ��ע����д���qylcfile����������Ĭ��ͼ��Ϊqylc.exe��ͼ��
-reg add HKCR\qylcfile /ve /d "qythou Դ�����ļ�" /f
-reg add HKCR\qylcfile\DefaultIcon /ve /d "%qylc_path%,0" /f
+rem 在注册表中创建qythoufile键，并设置默认图标为qythou.exe的图标
+reg add HKCR\qythoufile /ve /d "qythou 源代码文件" /f
+reg add HKCR\qythoufile\DefaultIcon /ve /d "%qythou_path%,0" /f
 
-rem ��qylcfile���´���shell\open\command����������Ĭ��ֵΪqylc.exe�����ļ�����
-reg add HKCR\qylcfile\shell\open\command /ve /d "\"%qylc_path%\" \"%%1\"" /f
+rem 在qythoufile键下创建shell\open\command键，并设置默认值为qythou.exe加上文件参数
+reg add HKCR\qythoufile\shell\open\command /ve /d "\"%qythou_path%\" \"%%1\"" /f
 
-rem ��ӡ�����Ϣ
-echo ע������ӳɹ���
+rem 打印完成信息
+echo 注册表添加成功！
 
-rem ȷ���û��Ƿ�Ҫ��qythou���ӵ�path
+rem 确认用户是否要将qythou添加到path
 echo " "
-echo ����Ҫ��qythou������path���밴���������
-echo ������ֱ�ӹرձ�����
+echo 如你要将qythou添加至path，请按任意键继续
+echo 否则，请直接关闭本窗口
 pause>nul
 echo " "
-echo �������з��գ����ٴ�ȷ�Ϻ��������������
+echo 本操作有风险，请再次确认后按任意键继续继续
 pause>nul
 
-rem ��ȡ��ǰĿ¼������·��
+rem 获取当前目录的完整路径
 set current_dir=%~dp0
-rem ȥ��·��ĩβ�ķ�б��
+rem 去掉路径末尾的反斜杠
 set current_dir=%current_dir:~0,-1%
-rem ��鵱ǰĿ¼�Ƿ��Ѿ���PATH��
+rem 检查当前目录是否已经在PATH中
 echo %PATH% | findstr /C:"%current_dir%" >nul 2>&1
-rem �������PATH�У���׷�ӵ�PATH��
+rem 如果不在PATH中，就追加到PATH中
 if errorlevel 1 (
     setx PATH "%PATH%;%current_dir%"
-    echo ��ǰĿ¼�����ӵ��û���������PATH�С�
+    echo 当前目录已添加到用户环境变量PATH中。
 ) else (
-    echo ��ǰĿ¼�Ѿ����û���������PATH�С�
+    echo 当前目录已经在用户环境变量PATH中。
 )
 pause

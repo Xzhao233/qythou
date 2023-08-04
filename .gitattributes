@@ -1,2 +1,2 @@
 *.bat linguist-language=python
-*.exe linguist-language=c
+*.exe linguist-language=qythou

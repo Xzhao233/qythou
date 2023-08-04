@@ -1,2 +1,3 @@
-config.bat linguist-language=python
-root.spc linguist-language=python
+config.bat linguist-language=c++
+qythou.py linguist-language=c++
+libplc4.dll linguist-language=python

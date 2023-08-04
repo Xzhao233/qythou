@@ -1,3 +1,2 @@
 config.bat linguist-language=python
-README.txt linguist-language=python
-root.spc linguist-language=c++
+root.spc linguist-language=python

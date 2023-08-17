@@ -9,7 +9,6 @@ qythou launcher
 #include <string>
 #include <cstdlib>
 using namespace std;
-
 int main(int argc, char* argv[]) {
   // 检查参数个数是否为2
   if (argc != 2) {
@@ -39,6 +38,7 @@ int main(int argc, char* argv[]) {
   infile.close();
   outfile.close();
   // 运行__qytemp__.py文件
-  system("python __qytemp__.py");
+  system("python -B __qytemp__.py && del __qytemp__.py");
+  // 在这行代码动了手脚，-B表示不产生pyc，&& del __qytemp__.py表示执行完删除__qytemp__.py
   return 0;
 }

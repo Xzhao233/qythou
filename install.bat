@@ -1,18 +1,18 @@
-@echo off
+﻿@echo off
 rem 这是一个用批处理写的示例代码
 
-rem 获取当前目录下的qythou.exe的完整路径
-set qythou_path=%cd%\qythou.exe
+rem 获取当前目录下的qylc.exe的完整路径
+set qylc_path=%cd%\qylc.exe
 
-rem 在注册表中创建.qy文件类型的键，并设置默认值为qythoufile
-reg add HKCR\.qy /ve /d qythoufile /f
+rem 在注册表中创建.qy文件类型的键，并设置默认值为qylcfile
+reg add HKCR\.qy /ve /d qylcfile /f
 
-rem 在注册表中创建qythoufile键，并设置默认图标为qythou.exe的图标
-reg add HKCR\qythoufile /ve /d "qythou 源代码文件" /f
-reg add HKCR\qythoufile\DefaultIcon /ve /d "%qythou_path%,0" /f
+rem 在注册表中创建qylcfile键，并设置默认图标为qylc.exe的图标
+reg add HKCR\qylcfile /ve /d "qythou 源代码文件" /f
+reg add HKCR\qylcfile\DefaultIcon /ve /d "%qylc_path%,0" /f
 
-rem 在qythoufile键下创建shell\open\command键，并设置默认值为qythou.exe加上文件参数
-reg add HKCR\qythoufile\shell\open\command /ve /d "\"%qythou_path%\" \"%%1\"" /f
+rem 在qylcfile键下创建shell\open\command键，并设置默认值为qylc.exe加上文件参数
+reg add HKCR\qylcfile\shell\open\command /ve /d "\"%qylc_path%\" \"%%1\"" /f
 
 rem 打印完成信息
 echo 注册表添加成功！

@@ -1,4 +1,4 @@
-# qythou
+﻿# qythou
 qythou -- 张浩杨博士全新开发语言
 
 你可能会问，这里为啥那么多.dll?
